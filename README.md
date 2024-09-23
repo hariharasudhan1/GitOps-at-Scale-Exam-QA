@@ -14,7 +14,7 @@ Resource A will be deployed first, then Resource B (if applicable). Resource C w
 
 6. `An application has an “allow” sync window for 5pm to 6pm. The time is now 7pm` -> You can deploy the application as no sync window is active
 
-7. `What is the best way according to the GitOps principles to update the container of an application` -> Use Argo Image updater and the “Argo CD write back” method
+7. `What is the best way according to the GitOps principles to update the container of an application` -> wrong Use Argo Image updater and the “Argo CD write back” method
 
 8. `Resource A is in the PreSync phase with Sync wave 50. Resource B is in the Sync phase with Sync Wave  -10. Resource C is in the PostSync phase with wave 50` -> Resource A will be deployed first then Resource B and finally Resource C
 
@@ -28,7 +28,7 @@ Resource A will be deployed first, then Resource B (if applicable). Resource C w
 
 13. `An application has a “deny” sync window for 5pm to 6pm. The time is now 7pm` -> You can deploy the application because no “deny” window is active
 
-14. `Can you use Application Sets with App of Apps applications?` -> Yes, they can be combined but only if the controllers are the same version
+14. `Can you use Application Sets with App of Apps applications?` ->wrong --> Yes, they can be combined but only if the controllers are the same version
 
 15. `You have lots of applications in a single Git repository under “/infra/apps/<app-name>”. The correct ApplicationSet generator to use is` -> Git Generator
 
@@ -40,7 +40,7 @@ Resource A will be deployed first, then Resource B (if applicable). Resource C w
 
 19. `How do Application Sets work?` -> Application Sets are generators for Argo CD applications
 
-20. `If you define “self-heal” for a root application that contains other applications...` -> Self-heal is enabled for both parent and child apps
+20. `If you define “self-heal” for a root application that contains other applications...` -> wrong Self-heal is enabled for both parent and child apps
 
 21. `How can you combine Application Set Generators?` -> By using a matrix generator
 
@@ -64,40 +64,41 @@ Resource A will be deployed first, then Resource B (if applicable). Resource C w
 
 31. `How does the Apps of Apps pattern work?` -> You create an Argo CD application that points to other applications
 
-32. `What is the best way of modeling your GitOps environments?` -> Using folders in a single git repository
+32. `What is the best way of modeling your GitOps environments?` -> -->wrong Using folders in a single git repository
+33.   It depends according to the assumptions and limitations of your organization
 
-33. `What are Sync Windows used for?` -> To disable/enable application deployments for different time periods
+34. `What are Sync Windows used for?` -> To disable/enable application deployments for different time periods
 
-34. `You have a production environment that gets container images with tags that match only 1.x version. The appropriate Argo Image updater strategy is` -> semver
+35. `You have a production environment that gets container images with tags that match only 1.x version. The appropriate Argo Image updater strategy is` -> semver
 
-35. `You have an application managed by Argo Image Updater with the “semver” strategy. The current image is tagged “1.4” with a constraint to “1.x” releases. You build a new image and push it with tag 1.2.7. This new container` -> will not be deployed because 1.4 is newer
+36. `You have an application managed by Argo Image Updater with the “semver” strategy. The current image is tagged “1.4” with a constraint to “1.x” releases. You build a new image and push it with tag 1.2.7. This new container` -> will not be deployed because 1.4 is newer
 
-36. `Where should you deploy an Argo CD application manifest?` -> In the “argo” namespace
+37. `Where should you deploy an Argo CD application manifest?` ->--->wrong  In the “argo” namespace
 
-37. `When you add an external cluster in Argo CD…` -> You need a context for the target cluster and the CLI authenticated to the management cluster
+38. `When you add an external cluster in Argo CD…` -> You need a context for the target cluster and the CLI authenticated to the management cluster
 
-38. `Resource A is marked with Sync wave -1 and Resource B is marked with wave 5.` -> We need to check for sync phases before we can answer
+39. `Resource A is marked with Sync wave -1 and Resource B is marked with wave 5.` -> We need to check for sync phases before we can answer
 
-39. `Resource A is in the PostSync phase and has Sync wave 5. Resource B is in the PostSync phase and has Sync Wave 5. Resource C is in the PostSync phase and has Sync Wave -10` -> C will be deployed first and then A and B will be deployed according to default Resource order
+40. `Resource A is in the PostSync phase and has Sync wave 5. Resource B is in the PostSync phase and has Sync Wave 5. Resource C is in the PostSync phase and has Sync Wave -10` -> C will be deployed first and then A and B will be deployed according to default Resource order
 
-40. `What is the Apps of Apps pattern?` -> A way to group multiple Argo CD applications together
+41. `What is the Apps of Apps pattern?` -> A way to group multiple Argo CD applications together
 
-41. `When you add an external/target cluster in Argo CD...` -> The management cluster needs network access to the target cluster
+42. `When you add an external/target cluster in Argo CD...` -> The management cluster needs network access to the target cluster
 
-42. `Can you use sync waves to replace sync phases?` -> Yes, but only if you don’t need the SyncFail mechanism
+43. `Can you use sync waves to replace sync phases?` -> Yes, but only if you don’t need the SyncFail mechanism
 
-43. `You want an Argo CD application to be deployed as soon as somebody creates a new Github repository with manifests. Which ApplicationSet generator should be used?` -> SCM provider Generator
+44. `You want an Argo CD application to be deployed as soon as somebody creates a new Github repository with manifests. Which ApplicationSet generator should be used?` -> SCM provider Generator
 
-44. `Resource A is in the Sync phase and has no Sync wave. Resource B is in the Sync phase and has Sync wave 0` -> A and B will be deployed according to the default Resource ordering
+45. `Resource A is in the Sync phase and has no Sync wave. Resource B is in the Sync phase and has Sync wave 0` -> A and B will be deployed according to the default Resource ordering
 
-45. `What is the major disadvantage of using folders as GitOps environments?` -> It is difficult to secure individual folders in a single git repository
+46. `What is the major disadvantage of using folders as GitOps environments?` -> It is difficult to secure individual folders in a single git repository
 
-46. `You have a “staging” container tag that should always be deployed to a staging environment as soon as somebody updates it. The appropriate Argo Image updater strategy is` -> latest
+47. `You have a “staging” container tag that should always be deployed to a staging environment as soon as somebody updates it. The appropriate Argo Image updater strategy is` -> wrong -->latest
 
-47. `An application has a “deny” sync window for 5pm to 7 pm, an “allow” sync window from 4pm to 7pm and an “allow” window from 5:30 to 6:30pm. The time is now 6pm` -> You cannot deploy the application, “deny” windows override “allow” windows
+48. `An application has a “deny” sync window for 5pm to 7 pm, an “allow” sync window from 4pm to 7pm and an “allow” window from 5:30 to 6:30pm. The time is now 6pm` -> You cannot deploy the application, “deny” windows override “allow” windows
 
-48. `What source can be used for Application Sets?` -> All of the above
+49. `What source can be used for Application Sets?` -> All of the above
 
-49. `How does Argo CD manage Kubernetes clusters?` -> All of the above are valid scenarios
+50. `How does Argo CD manage Kubernetes clusters?` -> All of the above are valid scenarios
 
-50. `You want to create temporary environments for developers while they create new features on different branches. The correct ApplicationSet generator to use is` -> Pull Request Generator
+51. `You want to create temporary environments for developers while they create new features on different branches. The correct ApplicationSet generator to use is` -> Pull Request Generator
